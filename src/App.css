@@ -1,6 +1,14 @@
 .App {
   text-align: center;
+  font-size:30px;
+  margin-top:5%;
 }
+
+.Clock-Days, .Clock-Hours, .Clock-Minutes, .Clock-Seconds{
+display:inline;
+margin:10px;
+}
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
