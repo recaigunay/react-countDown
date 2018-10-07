@@ -19,20 +19,20 @@ class Clock extends Component {
         input.value = "";
         this.props.ChangeDeadline(val);
     }
-    componentDidMount() {
-        setInterval(() => this.CalculateTime(), 1000);
+    componentWillMount() {
+        this.CalculateTime(this.props.deadline);
     }
-
+    componentDidMount() {
+        setInterval(() => this.CalculateTime(this.props.deadline), 1000);
+    }
     AddZero(num) {
         if (num < 10) return "0" + num;
         else return num;
     }
-    CalculateTime() {
+    CalculateTime(deadline) {
         //debugger;
-        const input = document.getElementById("newdate");
         const dtNow = new Date();
-        let dtLast = new Date(this.props.deadline);
-        if (input.value !== null && input.value !== "") dtLast = new Date(input.value);
+        let dtLast = new Date(deadline);
         const diff = dtLast.getTime() - dtNow.getTime();
         if (diff > 0) {
             const seconds = this.AddZero(Math.floor((diff / 1000) % 60));
@@ -57,7 +57,7 @@ class Clock extends Component {
                 <div className="Clock-Minutes">{this.state.minutes} Minutes</div>
                 <div className="Clock-Seconds">{this.state.seconds} Seconds</div>
                 <div>
-                    <input id="newdate" placeholder='new date'></input>
+                    <input id="newdate" placeholder='new date (2019/01/20)'></input>
                     <button onClick={() => this.ChangeDeadline()}>Submit</button>
                 </div>
 
