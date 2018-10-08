@@ -3,6 +3,10 @@
   font-size:30px;
   margin-top:5%;
 }
+.form-control {
+  width: 20% !important;
+  display:inline;
+}
 
 .Clock-Days, .Clock-Hours, .Clock-Minutes, .Clock-Seconds{
 display:inline;
